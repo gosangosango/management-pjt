@@ -19,6 +19,7 @@ public class Management {
     private long id;
 
     //일시
+    @Column(name="dateTime" , unique=true)
     private String dateTime;
 
     //가입자 수
@@ -47,6 +48,18 @@ public class Management {
         this.usedAmount = usedAmount;
         this.salesAmount = salesAmount;
     }
+
+    public Management toEntity(){
+        return Management.builder()
+                .dateTime(dateTime)
+                .registUserCnt(registUserCnt)
+                .deleteUserCnt(deleteUserCnt)
+                .paidAmount(paidAmount)
+                .usedAmount(usedAmount)
+                .salesAmount(salesAmount)
+                .build();
+    }
+
 
     public void update(String registUserCnt, String deleteUserCnt, String paidAmount,
                        String usedAmount, String salesAmount){
