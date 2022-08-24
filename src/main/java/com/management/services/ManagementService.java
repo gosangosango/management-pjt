@@ -44,6 +44,18 @@ public class ManagementService {
         return dateTime;
     }
 
+
+    @Transactional
+    public String patch (String dateTime, ManagementUpdateRequestDto requestDto){
+        Management management = managementRepository.findByDateTime(dateTime);
+        if(management == null){
+            throw new IllegalArgumentException("해당 정보가 없습니다. id=" + dateTime);
+        }
+        management.patch(requestDto.getRegistUserCnt(), requestDto.getDeleteUserCnt(), requestDto.getPaidAmount(),
+                requestDto.getUsedAmount(), requestDto.getSalesAmount());
+        return dateTime;
+    }
+
     @Transactional
     public String delete(String dateTime){
         Management management = managementRepository.findByDateTime(dateTime);

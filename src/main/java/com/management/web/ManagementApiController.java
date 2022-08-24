@@ -1,5 +1,6 @@
 package com.management.web;
 
+import com.management.domain.management.Management;
 import com.management.services.ManagementService;
 import com.management.web.dto.ManagementResponseDto;
 import com.management.web.dto.ManagementSaveRequestDto;
@@ -28,10 +29,17 @@ public class ManagementApiController {
         return managementService.update(dateTime, managementUpdateRequestDto);
     }
 
+    @PatchMapping("/api/v1/management/{dateTime}")
+    public String patch(@PathVariable String dateTime, @RequestBody ManagementUpdateRequestDto managementUpdateRequestDto){
+        return managementService.patch(dateTime, managementUpdateRequestDto);
+    }
+
     @DeleteMapping("/api/v1/management/{dateTime}")
     public String delete(@PathVariable String dateTime){
         return managementService.delete(dateTime);
     }
+
+
     //TODO: update delete 구현
 
 }

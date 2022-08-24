@@ -57,5 +57,14 @@ public class Management {
         this.salesAmount = salesAmount;
     }
 
+    public void patch(String registUserCnt, String deleteUserCnt, String paidAmount,
+                       String usedAmount, String salesAmount){
+        if(registUserCnt != null) this.registUserCnt = registUserCnt;
+        if(deleteUserCnt != null) this.deleteUserCnt = deleteUserCnt;
+        if(paidAmount != null) this.paidAmount = paidAmount;
+        if(usedAmount != null) this.usedAmount = usedAmount;
+        if(salesAmount != null) this.salesAmount = salesAmount;
+    }
+
     //TODO : 도메인 기능 메소드 구현(삽입, 수정, 삭제, 조회)
 }
